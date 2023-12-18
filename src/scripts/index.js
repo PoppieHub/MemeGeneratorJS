@@ -6,6 +6,7 @@ const colorPicker = document.querySelector('.input-field__text__set-color-text')
 const styleSelect = document.querySelector('.input-field__text__set-style');
 const fontSelect = document.querySelector('.input-field__text__set-font');
 const fieldSettingText = document.querySelector('.input-field__setting-text');
+const saveBtn = document.querySelector('.input-wrapper__save-btn');
 
 const ctx = memeCanvas.getContext('2d');
 
@@ -45,6 +46,7 @@ const handleImageUpload = (event) => {
 
                 // Поле ввода недоступно, пока нет изображения
                 textArea.hidden = false;
+                saveBtn.hidden = false;
                 memeCanvas.hidden = false;
             };
         };
@@ -53,6 +55,7 @@ const handleImageUpload = (event) => {
     } else {
     // Поле ввода доступно, пока нет изображения
         textArea.hidden = true;
+        saveBtn.hidden = true;
         memeCanvas.hidden = true;
     }
 };
