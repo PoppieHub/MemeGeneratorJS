@@ -5,11 +5,12 @@ const memeCanvas = document.querySelector('.field-draw-image__canvas');
 const colorPicker = document.querySelector('.input-field__text__set-color-text');
 const styleSelect = document.querySelector('.input-field__text__set-style');
 const fontSelect = document.querySelector('.input-field__text__set-font');
+const fieldSettingText = document.querySelector('.input-field__setting-text');
 
 const ctx = memeCanvas.getContext('2d');
 
 // Константы и переменные для управления состоянием
-const MAX_SIZE_IMAGE = 500;
+const MAX_SIZE_IMAGE = 300;
 let isDragging = false;
 let dragStartX = 0;
 let dragStartY = 0;
@@ -41,12 +42,21 @@ const handleImageUpload = (event) => {
                 resizeImage();
                 centerText();
                 drawText();
+
+                // Поле ввода недоступно, пока нет изображения
+                textArea.hidden = false;
+                memeCanvas.hidden = false;
             };
         };
 
         reader.readAsDataURL(file);
+    } else {
+    // Поле ввода доступно, пока нет изображения
+        textArea.hidden = true;
+        memeCanvas.hidden = true;
     }
 };
+
 
 // Ограничение размера изображения
 const resizeImage = () => {
@@ -75,6 +85,9 @@ const drawText = () => {
 const handleInput = () => {
     centerText();
     drawText();
+
+    // Если есть текст, элементы управления (стиль, цвет, шрифт) доступны
+    textArea.value.trim() === '' ? fieldSettingText.hidden = 'until-found' : fieldSettingText.hidden = '';
 };
 
 // Обработчик нажатия мыши для перемещения текста
@@ -179,4 +192,3 @@ colorPicker.addEventListener('input', handleColorChange);
 // Добавляем обработчики для изменения стиля текста и шрифта
 styleSelect.addEventListener('change', handleStyleChange);
 fontSelect.addEventListener('change', handleFontChange);
-

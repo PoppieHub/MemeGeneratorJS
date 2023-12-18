@@ -8,40 +8,46 @@
     <link rel="stylesheet" href="./src/assets/styles/layout.css">
 </head>
 <body>
-    <div class="container">
-        <div class="input-wrapper">
-            <h3 class="input-wrapper__info-section">
-                Загрузите изображение
-            </h3>
-            <div class="input-field">
-                <input type="file" accept="image/*" class="input-field__file-input">
-                <label class="input-field__label">
-                    <textarea class="input-field__text" oninput="handleInput(this)"></textarea>
-                    <input type="color" class="input-field__text__set-color-text">
-                    <select class="input-field__text__set-style">
-                        <option value="normal">Normal</option>
-                        <option value="italic">Italic</option>
-                        <option value="bold">Bold</option>
-                        <option value="bold italic">Bold Italic</option>
-                    </select>
-
-                    <select class="input-field__text__set-font">
-                        <option value="serif">Serif</option>
-                        <option value="sans-serif">Sans-serif</option>
-                        <option value="monospace">Monospace</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Verdana">Verdana</option>
-                    </select>
-
-                </label>
-            </div>
-            <button class="input-wrapper__save-btn" onclick="saveMeme()">Сохранить</button>
+<div class="container">
+    <div class="input-wrapper">
+        <h3 class="input-wrapper__info-section">
+            Загрузите изображение
+        </h3>
+        <div class="input-field">
+            <input type="file" accept="image/*" class="input-field__file-input btn">
+            <label class="input-field__label">
+                <textarea class="input-field__text" oninput="handleInput(this)" hidden placeholder="Введите текст"></textarea>
+                <div class="input-field__setting-text" hidden="until-found">
+                    <span>Настройки цвета -
+                        <input type="color" class="input-field__text__set-color-text">
+                    </span>
+                    <span>Настройки стиля -
+                        <select class="input-field__text__set-style" >
+                            <option value="normal">Normal</option>
+                            <option value="italic">Italic</option>
+                            <option value="bold">Bold</option>
+                            <option value="bold italic">Bold Italic</option>
+                        </select>
+                    </span>
+                    <span>Настройки шрифта -
+                        <select class="input-field__text__set-font" >
+                            <option value="serif">Serif</option>
+                            <option value="sans-serif">Sans-serif</option>
+                            <option value="monospace">Monospace</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+                    </span>
+                </div>
+            </label>
         </div>
-        <div class="field-draw-image">
-            <canvas class="field-draw-image__canvas"></canvas>
-        </div>
+        <button class="input-wrapper__save-btn btn" onclick="saveMeme()">Сохранить</button>
     </div>
+    <div class="field-draw-image">
+        <canvas class="field-draw-image__canvas" hidden></canvas>
+    </div>
+</div>
 <script src="./src/scripts/index.js"></script>
 </body>
 </html>
